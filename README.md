@@ -1,2 +1,2 @@
-# youtubeapp
-Youtube API v3, Node, React, Java Script, SASS
+# Youtube APP
+API do Google v3 moldado em NodeJS, React, Java Script e SASS
