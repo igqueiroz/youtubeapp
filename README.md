@@ -1,5 +1,5 @@
 # Youtube APP
-API do Google v3 moldado em NodeJS, React, Java Script e SASS
+O app lista um canal especifíco utilizando o player do YouTube. Faz buscas dentro do próprio canal e gera uma lista completa de todos os vídeos dele. Utiliza a API do Google v3 e foi moldado em NodeJS, React, Java Script, Webpack e SASS.
 
 # Para rodar o App
 1) Instale o NPM (https://www.npmjs.com/get-npm);
