@@ -339,6 +339,7 @@ h1, h2, h3, h4, h5 {
   margin-top: 22px;
   max-height: initial;
   padding: 16px 7px 16px 16px;
+  min-width: 281px;
 }
 
 #youtube-thumbs #video-info #video-nav {
@@ -359,7 +360,7 @@ h1, h2, h3, h4, h5 {
 #video-nav > li.placed {
   display: none;
 }
-#youtube-thumbs #video-info #video-nav .videos:hover {
+#youtube-thumbs #video-info #video-nav .videos:hover, #youtube-thumbs #video-info #video-nav .opened  {
   opacity: 1;
 }
 
@@ -561,6 +562,9 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 40px;
 }
 
+#youtube-thumbs #video-info #video-nav .video-img {
+    width: 130px;
+  }
 
 
 @media screen and (max-width: 1200px){ /*tablet*/
@@ -581,7 +585,7 @@ h1, h2, h3, h4, h5 {
     width: 58%;
   }
   #youtube-thumbs #video-info #video-nav .video-title {
-    width: 115px;
+    width: 118px;
     line-height: 16px;
     font-size: 15px;
     height: 74px;
@@ -621,29 +625,35 @@ h1, h2, h3, h4, h5 {
     height: 70px;
   }
 
+  #youtube-thumbs #video-info #video-nav .video-img {
+    width: 120px;
+  }
+
 
 }
 
 @media screen and (max-width: 991px) {/*tablets 2*/
   #youtube-thumbs #video-info #video-nav .video-img {
-    width: 100%;
+    width: 227px;
   }
+
   #youtube-thumbs #video-info #video-nav .video-title {
-    width: 100%;
     margin-top: 10px;
-    height: 43px;
+    height: 28px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 227px;
   }
 
   .results-page  #youtube-thumbs #video-info #video-nav .video-title {
     line-height: 20px;
-     
-      float: none;
-      width: 100%;
-      margin-top: 9px;
-      height: 40px;
-      overflow: hidden;
-      display: inline-block;
-      margin-bottom: 0;
+    float: none;
+    width: 100%;
+    margin-top: 9px;
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 0;
   }
   .results-page  #youtube-thumbs #video-info #video-nav h3 {
     display: none;
@@ -674,6 +684,10 @@ h1, h2, h3, h4, h5 {
   }
   .navbar-nav .search.active{
     margin-right: 20px;
+  }
+
+  #youtube-thumbs #video-info #video-nav .video-img {
+    width: 100%;
   }
   .navbar-nav .search.active {
     margin-right: 16px;
@@ -710,14 +724,13 @@ h1, h2, h3, h4, h5 {
 
   .results-page  #youtube-thumbs #video-info #video-nav .video-title {
     line-height: 20px;
-      margin-top: 15px;
-      float: none;
-      width: 100%;
-      margin-top: 12px;
-      height: 40px;
-      overflow: hidden;
-      display: inline-block;
-
+    margin-top: 15px;
+    float: none;
+    width: 100%;
+    margin-top: 12px;
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
   }
 
   .results-page #youtube-thumbs #video-info #video-nav .videos {
@@ -729,13 +742,22 @@ h1, h2, h3, h4, h5 {
   }
 
   #youtube-thumbs #video-info #video-nav .video-title {
-    height: 30px;
+    height: auto;
+    width: 100%;
+    float: left;
+    overflow: visible;
+    text-overflow: inherit;
+    white-space: normal;
+    margin-bottom: 15px;
   }
 
   #youtube-thumbs #load-more-videos.limited {
     width: 100%;
     margin-left: auto;
     margin-bottom: 50px;
+  }
+  #video-nav .video-img img {
+    width: 100%;
   }
 
 }

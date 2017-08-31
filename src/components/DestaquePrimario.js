@@ -9,8 +9,8 @@ import ChannelList from '../services/ChannelList'
 export default class DestaquePrimario extends Component {	
 	componentDidMount() {
 		var desdestaqueInitialLoad = true;
+        var firstState = true;
         handleSubmit();
-
         $("#load-more-videos").on( "click", function( event ) {
             $('.load').fadeIn();
             $("#load-more-videos").hide();
@@ -23,11 +23,15 @@ export default class DestaquePrimario extends Component {
 		function destaqueInitial(e) {
         	$('#videoDestaque').attr('src','https://www.youtube.com/embed/' + e.id);
         	var destaqueFields = '<h4>'+e.snippet.title+'</h4><span data-toggle="tooltip" data-placement="top" title="' + ConvertNumbers.NumberFormat(e.statistics.viewCount)+' views" class="tips video-info-views"></span><span data-toggle="tooltip" data-placement="top" title="'+ConvertNumbers.NumberConvertDate(e.snippet.publishedAt)+'" class="tips video-info-date"></span><div class="video-info-text-expandable"><p class="video-info-text-desc">'+e.snippet.description+'</p>'
-            $("#video-info").html(destaqueFields);  
+            $("#video-info").html(destaqueFields);
+            desdestaqueInitialLoad = false; 
+
         }
 
         function loadVideoContainer() {
              $(".videos").click( function(event) {
+                $(".videos").removeClass('opened');
+                $(this).addClass('opened');
                 var dataUrl = $(this).attr('data-url');
                 $('#videoDestaque').attr('src','https://www.youtube.com/embed/' + dataUrl);
                 $('.tips').remove();
@@ -50,14 +54,14 @@ export default class DestaquePrimario extends Component {
                 ChannelList.listarIds(videosIds.join()).then((response) => {
                     var items = response.data.items, videoList = "";
                     var destaqueFetch = response.data.items[0];
-                    console.log(response.data.items)
-                    if(desdestaqueInitialLoad){destaqueInitial(destaqueFetch)}
+                    if(desdestaqueInitialLoad){ destaqueInitial(destaqueFetch);}
                     response.data.items.forEach(e => {
-                    videoList = videoList + '<li data-desc="'+ e.snippet.description +'" data-url="'+ e.id +'" class="videos"  title="' + ConvertNumbers.NumberConvertDate(e.snippet.publishedAt)+'"><div class="video-img"><img src="'+ e.snippet.thumbnails.default.url+'" alt="'+e.snippet.title+'"><span class="durtime">'+ ConvertNumbers.NumberDurationToSeconds(e.contentDetails.duration)+'</span></div><span class="video-title">'+e.snippet.title+'</span><span class="video-icon-views">'+ConvertNumbers.NumberFormat(e.statistics.viewCount)+' views</span></li>';
+                    videoList = videoList + '<li data-desc="'+ e.snippet.description +'" data-url="'+ e.id +'" class="videos"  title="' + ConvertNumbers.NumberConvertDate(e.snippet.publishedAt)+'"><div class="video-img"><img src="'+ e.snippet.thumbnails.high.url+'" alt="'+e.snippet.title+'"><span class="durtime">'+ ConvertNumbers.NumberDurationToSeconds(e.contentDetails.duration)+'</span></div><span class="video-title">'+e.snippet.title+'</span><span class="video-icon-views">'+ConvertNumbers.NumberFormat(e.statistics.viewCount)+' views</span></li>';
                     });
                     $("#video-nav").append(videoList);
+                    if (firstState) {$("#video-nav .videos").eq(0).addClass('opened'); firstState = false};
                     $('[data-toggle="tooltip"]').tooltip({ placement:"auto"})
-                    loadVideoContainer()
+                    loadVideoContainer();
                     if (typeof nextPageTokenId === "undefined") {
                         $("#load-more-videos").hide();
                         $('.load').hide();
@@ -71,15 +75,13 @@ export default class DestaquePrimario extends Component {
         }
 	}
 
-    
-
 	render() {
 		return(
 			<div className="row">
                 <div id="youtube-destaque-wrapper" className="col-sm-8">
                   <h1>Vídeo em destaque</h1>
                   <div id="youtube-destaque">
-                    <iframe id="videoDestaque" width="100%" height="315" src="" frameBorder="0" allowFullScreen></iframe>
+                    <iframe id="videoDestaque" width="100%" height="315" src="" frameBorder="0" allowFullScreen />
                   </div>
                   <input type="hidden" id="pageToken" value="" />
                   <div id="video-info" className="box-shade" />

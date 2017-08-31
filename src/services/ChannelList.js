@@ -12,7 +12,6 @@ const ChannelId = "UCO9XI15xOtOyEWOYpn0whDA"
 
 const ChannelList = {
   listarCanal(results,pageToken) {
-  	console.log(pageToken)
     return axios.get(`https://www.googleapis.com/youtube/v3/search?key=${SearchKey}&part=snippet&channelId=${ChannelId}&maxResults=${results}&pageToken=${pageToken}`);
   },
   listarIds(ids) {
