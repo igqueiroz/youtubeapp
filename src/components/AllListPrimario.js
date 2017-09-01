@@ -64,7 +64,7 @@ export default class AllListPrimario extends Component {
                 var publication = button.data('publication');
                 var description = button.data('desc');
                 var text = button.data('text');
-                var thevideo = button.data('thevideo')
+                var thevideo = button.data('thevideo');
                 var text = button.data('text');
                 var modal = $(this);
                 modal.find('h4').text(title);
