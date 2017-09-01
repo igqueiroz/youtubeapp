@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5 {
 }
 #video-info h4 {
   font-weight: 600;
-  padding-right: 65px;
+  padding-right: 90px;
 }
 
 #video-info .video-info-views, #video-info .video-info-date {
@@ -600,10 +600,10 @@ h1, h2, h3, h4, h5 {
   }
 
   .results-page #youtube-thumbs #video-info #video-nav .video-icon-views {
-    margin-top: 16px;
-      padding-bottom: 2px;
-      background-position: -159px -8px;
-      font-size: 13px;
+    margin-top: 0;
+    padding-bottom: 2px;
+    background-position: -159px -8px;
+    font-size: 13px;
   }
 
 
@@ -645,12 +645,12 @@ h1, h2, h3, h4, h5 {
     width: 227px;
   }
 
-  .results-page  #youtube-thumbs #video-info #video-nav .video-title {
+  .results-page #youtube-thumbs #video-info #video-nav .video-title {
     line-height: 20px;
     float: none;
     width: 100%;
     margin-top: 9px;
-    height: 40px;
+    height: auto;
     overflow: hidden;
     display: inline-block;
     margin-bottom: 0;
@@ -668,6 +668,9 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     margin-left: auto;
     margin-bottom: 50px;
+  }
+  .results-page #youtube-thumbs #video-info #video-nav .videos {
+    width: 227px;
   }
 }
 
@@ -721,14 +724,14 @@ h1, h2, h3, h4, h5 {
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
     background-color: #fff;
   }
-
-  .results-page  #youtube-thumbs #video-info #video-nav .video-title {
+  
+  .results-page #youtube-thumbs #video-info #video-nav .video-title {
     line-height: 20px;
     margin-top: 15px;
     float: none;
     width: 100%;
     margin-top: 12px;
-    height: 40px;
+    height: auto;
     overflow: hidden;
     display: inline-block;
   }

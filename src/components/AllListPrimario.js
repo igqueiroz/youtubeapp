@@ -6,9 +6,6 @@ import ChannelList from '../services/ChannelList'
 
 export default class AllListPrimario extends Component {	
 	componentDidMount() {
-        // ConvertNumbers.NumberFormat
-        // ConvertNumbers.NumberConvertDate
-        // ConvertNumbers.NumberDurationToSeconds
             $("#load-more-videos").on( "click", function( event ) {
                 $('.load').fadeIn();
                 $("#load-more-videos").hide();
@@ -17,9 +14,8 @@ export default class AllListPrimario extends Component {
             handleSubmit()
             
             function tools() {
-				var forEach = Array.prototype.forEach;
-				var els = document.getElementsByClassName('ellipsis');
-				forEach.call(els, function(el) {
+				var els = document.querySelectorAll('.ellipsis');
+				els.forEach(el => {
 					var ellipsis = new Ellipsis(el);
 					ellipsis.calc();
 					ellipsis.set();
@@ -41,10 +37,10 @@ export default class AllListPrimario extends Component {
                         var destaqueFetch = response.data.items[0];
                         
                         response.data.items.forEach(e => {
-                        videoList = videoList + '<li data-desc="'+ e.snippet.description +'" data-url="'+ e.id +'" class="videos"  title="' + ConvertNumbers.NumberConvertDate(e.snippet.publishedAt)+'"><div class="video-img"><img src="'+ e.snippet.thumbnails.high.url+'" alt="'+e.snippet.title+'"><span class="durtime">'+ ConvertNumbers.NumberDurationToSeconds(e.contentDetails.duration)+'</span></div><span class="video-title">'+e.snippet.title+'</span><span class="video-icon-views">'+ConvertNumbers.NumberFormat(e.statistics.viewCount)+' views</span></li>';
+                        videoList = videoList + '<li class="videos" data-desc="'+ e.snippet.description +'" data-toggle="modal" data-target="#myModal" data-theVideo="'+e.id+'" data-title="'+e.snippet.title+'" data-views="'+ ConvertNumbers.NumberFormat(e.statistics.viewCount)+'" data-publication="'+ ConvertNumbers.NumberConvertDate(e.snippet.publishedAt)+'"><div class="video-img"><img src="'+e.snippet.thumbnails.default.url+'"/><span>'+ ConvertNumbers.NumberDurationToSeconds(e.contentDetails.duration)+'</span></div><div class="ellipsis"><h3 class="video-title">'+e.snippet.title+'</h3></div><span class="video-icon-views">'+ ConvertNumbers.NumberFormat(e.statistics.viewCount)+' views</span></li>'
                         });
                         $("#video-nav").append(videoList);
-                        
+                        tools()
                         $('[data-toggle="tooltip"]').tooltip({ placement:"auto"})
                         loadVideoContainer();
                         if (typeof nextPageTokenId === "undefined") {
@@ -81,14 +77,14 @@ export default class AllListPrimario extends Component {
                 modal.find('.close').click(function () {
                     $('#youtube-destaque iframe').attr('src', '');
                 });
-                $(document).click(function (e) {
-                    if (e.target === $('#myModal')[0] && $('body').hasClass('modal-open')) {
-                        $('#youtube-destaque iframe').attr('src', '');
-                    }
-                })
+                    $(document).click(function (e) {
+                        if (e.target === $('#myModal')[0] && $('body').hasClass('modal-open')) {
+                            $('#youtube-destaque iframe').attr('src', '');
+                        }
+                    })
                     $('[data-toggle="tooltip"]').tooltip({ placement:"auto"})
                 });
-            }
+            }       
     }
 	render() {
 		return(
