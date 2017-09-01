@@ -16,6 +16,9 @@ const ChannelList = {
   },
   listarIds(ids) {
     return axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${SearchKey}&part=statistics,contentDetails,snippet&id=${ids}`);
+  },
+  pesquisarTerms(results,pageToken,term) {
+  	return axios.get(`https://www.googleapis.com/youtube/v3/search?key=${SearchKey}&part=snippet&channelId=${ChannelId}&maxResults=${results}&pageToken=${pageToken}&q=${term}`);
   }
 };
   
