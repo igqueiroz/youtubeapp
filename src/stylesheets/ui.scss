@@ -59,11 +59,12 @@ p *, p {
   padding: 0;
   background: none;
 }
-@media (min-width: 768px) {
-  .navbar-nav>li>a {
-      padding: 0;
-  }
+
+#youtube-thumbs .show-results {
+  width: 100%;
+  text-align: center;
 }
+
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   border: 0;
 }
@@ -333,7 +334,9 @@ h1, h2, h3, h4, h5 {
 #youtube-destaque-wrapper, #youtube-thumbs {
   margin-top: 5px;
   float: left;
+ 
 }
+
 
 #youtube-thumbs #video-info {
   margin-top: 22px;
@@ -673,7 +676,11 @@ h1, h2, h3, h4, h5 {
     width: 227px;
   }
 }
-
+@media (min-width: 768px) {
+  .navbar-nav>li>a {
+      padding: 0;
+  }
+}
 @media screen and (max-width: 767px), only screen and (max-device-width: 480px) {/*cel phones*/
   .navbar-nav .search {
     width: 96.2% !important;
