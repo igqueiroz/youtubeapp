@@ -569,6 +569,10 @@ h1, h2, h3, h4, h5 {
     width: 130px;
   }
 
+.results-page .expanded {
+  width: 100%;
+}
+
 
 @media screen and (max-width: 1200px){ /*tablet*/
   .results-page #youtube-thumbs #video-info #video-nav .videos {
@@ -631,6 +635,8 @@ h1, h2, h3, h4, h5 {
   #youtube-thumbs #video-info #video-nav .video-img {
     width: 120px;
   }
+
+
 
 
 }

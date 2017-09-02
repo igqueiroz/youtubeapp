@@ -30,6 +30,7 @@ export default class AllListPrimario extends Component {
                     videosId.forEach(e => {
                         videosIds.push(e.id.videoId);
                     })
+                    console.log(nextPageTokenId);
                     $("#pageToken").val(nextPageTokenId);
                     
                     ChannelList.listarIds(videosIds.join()).then((response) => {
@@ -89,7 +90,7 @@ export default class AllListPrimario extends Component {
 	render() {
 		return(
 			<div>
-				<div id="youtube-thumbs">
+				<div id="youtube-thumbs" className="expanded">
 		     		<div id="video-info" className="results">
 		     			<ul id="video-nav" className="scrollbar" />
 		     		</div>
